@@ -1,0 +1,19 @@
+.button {
+   display: flex;
+   flex-direction: column;
+   width: 70px;
+   height: 15px;
+   background-color: #27a1ff;
+   color: #fff;
+   border: none;
+   border-radius: 3px;
+   font-size: 12px;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+   padding: 5px;
+}
+
+.button_type_pressed {
+   background-color: #c2e4fe;
+}

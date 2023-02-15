@@ -1,8 +1,11 @@
+import Header from '../Header/Header';
 import './Calendar.css';
 
 const Calendar = () => {
    return (
-      <div className='calendar'></div>
+      <div className='calendar'>
+         <Header/>
+      </div>
    );
 };
 
