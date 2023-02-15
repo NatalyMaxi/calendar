@@ -1,0 +1,8 @@
+.start-page {
+   display: block;
+   margin:200px auto 0;
+   width: 960px;
+   height: 480px;
+   background-image: url(../../images/Calendar.png); 
+}
+
