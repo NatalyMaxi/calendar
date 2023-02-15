@@ -8,10 +8,10 @@ const App = () => {
   return (
     <div className='page'>
       <Routes>
-        <Route exact path='/'
+        <Route path='/'
           element={<StartPage />}
         />
-        <Route path='/calendar'
+        <Route path='calendar'
           element={<Calendar />}
         />
       </Routes>
