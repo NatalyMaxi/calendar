@@ -32,7 +32,7 @@
 }
 
 .search__item:focus {
-   border: 1px solid #27a1ff;
+   border: 2px solid #27a1ff;
 }
 
 ::-webkit-input-placeholder {

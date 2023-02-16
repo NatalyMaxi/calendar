@@ -1,0 +1,47 @@
+.day-element {
+   display: flex;
+   flex-direction: column;
+   box-sizing: border-box;
+   max-width: 141.141px;
+   height: 120px;
+   background: #fff;
+   gap: 5px;
+}
+
+.day-element_type_marked {
+   background: #c2e4fe;
+}
+
+.day-element_active {
+   border: 1px solid #27a1ff;
+}
+
+.day-element__data-container {
+   box-sizing: border-box;
+   padding: 5px 0 0 5px;
+   color: #292929;
+   font-size: 14px;
+   font-weight: 600;
+}
+
+.day-element__info-container {
+   font-size: 14px;
+   padding: 0;
+   padding-left: 5px;
+}
+
+.day-element__title {
+   font-weight: 700;
+   color: #000;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+   margin: 0;
+}
+
+.day-element__text {
+   font-weight: 400;
+   color: #292929;
+   overflow: hidden;
+   margin: 0;
+}
