@@ -1,4 +1,4 @@
-import dateFns from "date-fns";
+import dateFns from 'date-fns';
 import DayCell from '../DayCell/DayCell';
 import './DaysGrid.css';
 

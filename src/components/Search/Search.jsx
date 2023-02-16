@@ -6,7 +6,7 @@ const Search = () => {
          <button className='search__button'></button>
          <input
             className='search__item'
-            type="search"
+            type='search'
             placeholder='Введите слово'>
          </input>
       </div>
