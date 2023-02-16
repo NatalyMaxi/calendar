@@ -1,6 +1,7 @@
+import './Header.css';
 import Button from '../Button/Button';
 import Search from '../Search/Search';
-import './Header.css';
+
 
 const Header = () => {
    return (
