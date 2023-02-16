@@ -26,10 +26,9 @@
 }
 
 .navigation__board {
-   min-width: 80px;
+   width: 140px;
    font-size: 19px;
    text-align: center;
-   margin: 0 6px;
 }
 
 .navigation__button {

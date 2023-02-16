@@ -1,18 +1,20 @@
 import './Navigation.css';
 
-const Navigation = () => {
+const Navigation = (props) => {
    return (
       <div className='navigation'>
          <button
             className='navigation__btn'
             type="button"
+            onClick={props.showPreviousMonth}
          >
             <span className='navigation__item'>◀</span>
          </button>
-         <div className='navigation__board'>Ноябрь 2021</div>
+         <div className='navigation__board'>{props.currentDate}</div>
          <button
             className='navigation__btn'
             type="button"
+            onClick={props.showNextMonth}
          >
             <span className='navigation__item'>▶</span>
          </button>
@@ -20,6 +22,7 @@ const Navigation = () => {
          <button
             className='navigation__button'
             type="button"
+            onClick={props.showCurrentDate}
          >Сегодня
          </button>
 
