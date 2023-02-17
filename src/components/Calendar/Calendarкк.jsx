@@ -6,20 +6,22 @@ import Navigation from '../Navigation/Navigation';
 import DaysGrid from '../DaysGrid/DaysGrid'
 import { useState } from 'react';
 
+
 const Calendar = (props) => {
-   const [currentDate, setCurrentDate] = useState(new Date())
+   const [currentDate, setCurrentDate] = useState(`${format(new Date(), 'MMMM yyyy', { locale: ru })}`)
+   
    console.log(currentDate)
 
    const showNextMonth = () => {
-      setCurrentDate(addMonths(new Date(currentDate), 1))
+      setCurrentDate(`${format(addMonths(new Date(currentDate), 1), 'MMMM yyyy')}`)
 
    }
    const showPreviousMonth = () => {
-      setCurrentDate(addMonths(new Date(currentDate), -1))
+      setCurrentDate(`${format(addMonths(new Date(currentDate), -1), 'MMMM yyyy')}`)
    }
 
    const showCurrentDate = () => {
-      setCurrentDate(`${format(new Date(), 'MMMM yyyy')}`)
+      setCurrentDate(`${format(new Date(), 'MMMM yyyy', { locale: ru })}`)
    }
 
    return (
@@ -29,13 +31,13 @@ const Calendar = (props) => {
             onEditQuicklyData={props.onEditQuicklyData}
          />
          <Navigation
-            currentDate={format(currentDate, 'LLLL yyyy', { locale: ru })}
+            currentDate={currentDate}
             showNextMonth={showNextMonth}
             showPreviousMonth={showPreviousMonth}
             showCurrentDate={showCurrentDate}
          />
          <DaysGrid
-            currentDate={format(currentDate, 'LLLL yyyy', { locale: ru })}
+            currentDate={currentDate}
             onEditData={props.onEditData}
          />
       </div>
