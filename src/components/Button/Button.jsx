@@ -1,11 +1,18 @@
 import './Button.css';
 
 const Button = (props) => {
+
    return (
-      <div className='button'>
-         <span>{props.text}</span>
-         </div>
-   );
-};
+      <button
+         className='button'
+         type={props.type}
+         text={props.text}
+         onClick={props.onClick}
+         {...props.rest}
+      >
+         {props.text}
+      </button>
+   )
+}
 
 export default Button;

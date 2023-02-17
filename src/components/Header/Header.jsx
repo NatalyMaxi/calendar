@@ -1,15 +1,14 @@
 import './Header.css';
-import Button from '../Button/Button';
+import ButtonBlue from '../ButtonBlue/ButtonBlue';
 import Search from '../Search/Search';
 
-
-const Header = () => {
+const Header = (props) => {
    return (
       <div className='header'>
          <div className='header-content'>
             <div className='header__buttons-container'>
-               <Button text='Добавить' />
-               <Button text='Обновить' />
+               <ButtonBlue text='Добавить' onClick={props.onEditQuicklyData} />
+               <ButtonBlue text='Обновить' />
             </div>
             <Search />
          </div>

@@ -16,10 +16,10 @@ const DaysGrid = (props) => {
                let formattedDate = format(el, "D")
                if (index < 7) {
                   // let dayWeek = (format(dateFns.addDays(firstDayOfWeek, index +1), "dddd")) //английский язык
-                  return <DayCell num={formattedDate} dayWeek={arrayDaysWeek[index] + ', '} key={index} />
+                  return <DayCell onEditData={props.onEditData} num={formattedDate} dayWeek={arrayDaysWeek[index] + ', '} key={index} />
                   // return <DayCell num={formattedDate} dayWeek={dayWeek + ', '} key={index} /> //английский язык
                }
-               return <DayCell num={formattedDate} dayWeek={''} key={index} />
+               return <DayCell onEditData={props.onEditData} num={formattedDate} dayWeek={''} key={index} />
             })
          }
       </section>

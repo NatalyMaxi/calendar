@@ -22,6 +22,7 @@
    color: #292929;
    font-size: 14px;
    font-weight: 600;
+   cursor: pointer;
 }
 
 .day-element__info-container {

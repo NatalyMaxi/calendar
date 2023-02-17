@@ -1,11 +1,12 @@
 import './Calendar.css';
-import {format, addMonths} from 'date-fns';
+import { format, addMonths } from 'date-fns';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import DaysGrid from '../DaysGrid/DaysGrid'
 import { useState } from 'react';
 
-const Calendar = () => {
+
+const Calendar = (props) => {
    const date = new Date();
    const [currentDate, setCurrentDate] = useState(`${format(date, 'MMMM YYYY')}`)
 
@@ -18,12 +19,17 @@ const Calendar = () => {
       let date = `${addMonths(currentDate, -1)}`
       setCurrentDate(`${format(date, 'MMMM YYYY')}`)
    }
+
    const showCurrentDate = () => {
       setCurrentDate(`${format(date, 'MMMM YYYY')}`)
    }
+
    return (
       <div className='calendar'>
-         <Header />
+         <Header
+            popup={props.popup}
+            onEditQuicklyData={props.onEditQuicklyData}
+         />
          <Navigation
             currentDate={currentDate}
             showNextMonth={showNextMonth}
@@ -32,6 +38,7 @@ const Calendar = () => {
          />
          <DaysGrid
             currentDate={currentDate}
+            onEditData={props.onEditData}
          />
       </div>
    );

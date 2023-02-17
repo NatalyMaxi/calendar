@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import StartPage from '../StartPage/StartPage';
 import Calendar from '../Calendar/Calendar';
+import PopupAddEvent from '../PopupAddEvent/PopupAddEvent';
+import PopupAddQuicklyEvent from '../PopupAddQuicklyEvent/PopupAddQuicklyEvent';
 
-const App = () => {
+
+function App() {
+  const [isPopupAddEventOpen, setIsPopupAddEventOpen] = useState(false);
+  const [isPopupAddQuicklyEventOpen, setIsPopupAddQuicklyEventOpen] = useState(false);
+
+
+  function handleClickAddEvent() {
+    setIsPopupAddEventOpen(true);
+  }
+
+  function handleClickAddQuicklyEvent() {
+    setIsPopupAddQuicklyEventOpen(true);
+  }
+
+  function closeAllPopups() {
+    setIsPopupAddEventOpen(false)
+    setIsPopupAddQuicklyEventOpen(false)
+  }
   return (
     <div className='page'>
       <Routes>
@@ -12,9 +31,21 @@ const App = () => {
           element={<StartPage />}
         />
         <Route path='calendar'
-          element={<Calendar />}
+          element={<Calendar
+            onEditData={handleClickAddEvent}
+            onEditQuicklyData={handleClickAddQuicklyEvent}
+          />}
         />
       </Routes>
+      <PopupAddEvent
+        isOpen={isPopupAddEventOpen}
+        onClose={closeAllPopups}
+        isTextarea={true}
+      />
+      <PopupAddQuicklyEvent
+        isOpen={isPopupAddQuicklyEventOpen}
+        onClose={closeAllPopups}
+      />
     </div>
   );
 }

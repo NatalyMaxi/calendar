@@ -1,4 +1,5 @@
 import './Navigation.css';
+import Button from '../Button/Button';
 
 const Navigation = (props) => {
    return (
@@ -18,14 +19,11 @@ const Navigation = (props) => {
          >
             <span className='navigation__item'>▶</span>
          </button>
-
-         <button
-            className='navigation__button'
+         <Button
             type="button"
+            text='Сегодня'
             onClick={props.showCurrentDate}
-         >Сегодня
-         </button>
-
+         />
       </div>
    );
 };
