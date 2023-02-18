@@ -2,10 +2,11 @@ import './Form.css';
 
 const Form = (props) => {
 
-   const addTextarea = props.isTextarea
+   const addTextarea = props.name === 'big'? true: false
 
    return (
       <form
+         name={props.name}
          className='form'
          noValidate
          onSubmit={props.onSubmit}
@@ -17,7 +18,7 @@ const Form = (props) => {
 
                {
                   addTextarea &&
-                  <textarea className='form__item' id='event' cols="30" rows="10" placeholder='Описание события'>ffff</textarea>
+                  <textarea className='form__item' id='event' cols="30" rows="10" placeholder='Описание события'></textarea>
                }
 
             </div>

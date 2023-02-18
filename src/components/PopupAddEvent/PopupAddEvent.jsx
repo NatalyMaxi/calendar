@@ -4,6 +4,9 @@ import InputField from '../InputField/InputField';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
 const PopupAddEvent = (props) => {
+
+
+   
    return (
       <PopupWithForm
          popup='big'
@@ -11,7 +14,8 @@ const PopupAddEvent = (props) => {
          onClose={props.onClose}
       >
          <Form
-            isTextarea={props.isTextarea}>
+         name='big'
+            >
             <>
                <InputField
                   id='date'

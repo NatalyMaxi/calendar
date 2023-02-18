@@ -10,7 +10,9 @@ const PopupAddQuicklyEvent = (props) => {
          isOpen={props.isOpen}
          onClose={props.onClose}
       >
-         <Form>
+         <Form
+            name='small'
+         >
             <>
                <InputField 
                   id='info'

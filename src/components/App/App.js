@@ -40,7 +40,6 @@ function App() {
       <PopupAddEvent
         isOpen={isPopupAddEventOpen}
         onClose={closeAllPopups}
-        isTextarea=''
       />
       <PopupAddQuicklyEvent
         isOpen={isPopupAddQuicklyEventOpen}
