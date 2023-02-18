@@ -8,7 +8,6 @@ import { useState } from 'react';
 
 const Calendar = (props) => {
    const [currentDate, setCurrentDate] = useState(new Date())
-   console.log(currentDate)
 
    const showNextMonth = () => {
       setCurrentDate(addMonths(new Date(currentDate), 1))
@@ -29,13 +28,13 @@ const Calendar = (props) => {
             onEditQuicklyData={props.onEditQuicklyData}
          />
          <Navigation
-            currentDate={format(currentDate, 'LLLL yyyy', { locale: ru })}
+            currentDate={format(currentDate, 'LLLL yyyy', { locale: ru }).charAt(0).toUpperCase() + format(currentDate, 'LLLL yyyy', { locale: ru }).slice(1)}
             showNextMonth={showNextMonth}
             showPreviousMonth={showPreviousMonth}
             showCurrentDate={showCurrentDate}
          />
          <DaysGrid
-            currentDate={format(currentDate, 'LLLL yyyy', { locale: ru })}
+            currentDate={currentDate}
             onEditData={props.onEditData}
          />
       </div>

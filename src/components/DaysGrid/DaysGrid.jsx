@@ -1,29 +1,36 @@
-import { format, addDays, startOfMonth, startOfWeek } from 'date-fns';
+import { format, addDays, startOfMonth, startOfWeek, endOfMonth, endOfWeek, differenceInDays } from 'date-fns';
 import DayCell from '../DayCell/DayCell';
 import './DaysGrid.css';
+import { ru } from 'date-fns/locale'
 
 const DaysGrid = (props) => {
-   const monthStart = startOfMonth(new Date(props.currentDate));
-   const startDate = startOfWeek(new Date(monthStart));
- 
-   // const monthEnd = dateFns.endOfMonth(currentMonth);
- 
-   // const endDate = dateFns.endOfWeek(monthEnd);
-   const arrayDaysWeek = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье',]
-   const daysArray = [...Array(42)].map((el, i) => addDays(startDate, i + 1))
-   const newDaysArray = Object(daysArray)
-
+   /**
+    * Возвращает дату с днем недели, с которой стартует месяц заданной даты 
+    */
+   const monthStart = startOfMonth(new Date(props.currentDate)); //среда
+   /**
+    * Возвращает дату начала недели (дата, выпадает на воскресенье, так как локализация английская)
+    */
+   const startDate = startOfWeek(monthStart);  //29 января
+   /**
+    * Возвращает даты последнего дня недели, в которой находится указанная дата
+    */
+   const lastDay = endOfWeek(endOfMonth(monthStart));
+   /**
+    * Массив всех дат,  входящих в полные недеи,  сосмещением на единицу, чтоб перевести к русской недели
+    */
+   const daysArray = [...Array(differenceInDays(lastDay, startDate) + 1)]
+      .map((el, i) => addDays(startDate, i + 1))
    return (
       <section className='content'>
          {
-            newDaysArray.map((el, index) => {
-               let formattedDate = format(el, 'd')
+            daysArray.map((el, index) => {
+               let formattedDayWeek = format(new Date(el), 'EEEE', { locale: ru })
+               let formateDay = format(new Date(el), 'd')
                if (index < 7) {
-                  // let dayWeek = (format(dateFns.addDays(firstDayOfWeek, index +1), "dddd")) //английский язык
-                  return <DayCell onEditData={props.onEditData} num={formattedDate} dayWeek={arrayDaysWeek[index] + ', '} key={index} />
-                  // return <DayCell num={formattedDate} dayWeek={dayWeek + ', '} key={index} /> //английский язык
+                  return <DayCell onEditData={props.onEditData} dateCrid={formattedDayWeek.charAt(0).toUpperCase() + formattedDayWeek.slice(1) + ', ' + formateDay} key={index} />
                }
-               return <DayCell onEditData={props.onEditData} num={formattedDate} dayWeek={''} key={index} />
+               return <DayCell onEditData={props.onEditData} dateCrid={formateDay} key={index} />
             })
          }
       </section>
