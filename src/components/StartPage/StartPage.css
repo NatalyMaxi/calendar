@@ -1,8 +1,58 @@
 .start-page {
-   display: block;
-   margin:200px auto 0;
-   width: 960px;
-   height: 480px;
-   background-image: url(../../images/Calendar.png); 
+   margin: 0 auto;
+   width: 1000px;
+   height: 100%;
+   align-items: center;
+   justify-content: center;
+   background: #ffffff;
 }
 
+.start-page__container {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+   width: 960px;
+   height: 480px;
+   box-sizing: border-box;
+   background: #292929;
+   margin: 200px auto 0;
+   padding: 80px 113px 60px 175px;
+}
+
+.start-page__button {
+   font-family: 'Inter';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 18px;
+   line-height: 22px;
+   background-color: #27a1ff;
+   text-align: center;
+   box-sizing: border-box;
+   border: none;
+   border-radius: 5px;
+   color: #ffffff;
+   text-decoration: none;
+   padding: 17px 24px;
+   cursor: pointer;
+}
+
+.start-page__button_type_dummy {
+   background: #15b743;
+   margin-top: 22px;
+   align-self: start;
+   cursor: default;
+}
+
+.start-page__title {
+   font-family: 'Inter';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 64px;
+   line-height: 77px;
+   color: #333333;
+   background: #ffffff;
+   border-radius: 5px;
+   margin-top: 32px;
+   margin-bottom: 25px;
+   padding: 16px 32px;
+}
