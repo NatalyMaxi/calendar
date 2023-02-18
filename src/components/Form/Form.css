@@ -16,7 +16,7 @@
 .form__input-container {
    display: flex;
    flex-direction: column;
-   gap: 10px;
+   gap: 8px;
 }
 
 .form__button-container {
@@ -28,11 +28,13 @@
    font-weight: 400;
    font-size: 14px;
    line-height: 16px;
+   height: 125px;
    border: 1px solid #cfcfcf;
    border-radius: 3px;
    box-sizing: border-box;
    outline: none;
    text-indent: 8px;
+   margin: 13px 0 0 0;
 }
 
 .form__item:focus {

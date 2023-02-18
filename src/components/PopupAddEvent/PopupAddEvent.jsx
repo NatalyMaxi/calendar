@@ -18,16 +18,22 @@ const PopupAddEvent = (props) => {
             >
             <>
                <InputField
+                  id='event'
+                  name='event'
+                  type='search'
+                  placeholder='Событие'
+               />
+               <InputField
                   id='date'
                   name='date'
                   type='search'
-                  placeholder='Дата'
+                  placeholder='День, месяц, год'
                />
                <InputField
                   id='participants'
                   name='participants'
                   type='search'
-                  placeholder='Участники'
+                  placeholder='Имена участников'
                />
             </>
             <>

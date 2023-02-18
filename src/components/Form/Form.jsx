@@ -16,12 +16,11 @@ const Form = (props) => {
             <div className='form__input-container'>
                {props.children[0]}
 
-               {
-                  addTextarea &&
-                  <textarea className='form__item' id='event' cols="30" rows="10" placeholder='Описание события'></textarea>
-               }
-
             </div>
+            {
+               addTextarea &&
+               <textarea className='form__item' id='description' cols="30" rows="10" placeholder='Описание'></textarea>
+            }
             <div className='form__button-container'>
                {props.children[1]}
             </div>
