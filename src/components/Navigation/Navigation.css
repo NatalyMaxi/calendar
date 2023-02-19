@@ -30,6 +30,7 @@
    width: 140px;
    font-size: 19px;
    text-align: center;
+   text-transform: capitalize;
 }
 
 .navigation__button {

@@ -3,7 +3,7 @@ import './Search.css';
 const Search = () => {
    return (
       <div className='search'>
-         <label for="lfname" className='search__button'></label>
+         <label htmlFor="lfname" className='search__button'></label>
          <input
             className='search__item'
             id="lfname"

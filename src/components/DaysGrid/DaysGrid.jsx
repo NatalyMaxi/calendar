@@ -28,7 +28,7 @@ const DaysGrid = (props) => {
                let formattedDayWeek = format(new Date(el), 'EEEE', { locale: ru })
                let formateDay = format(new Date(el), 'd')
                if (index < 7) {
-                  return <DayCell onEditData={props.onEditData} dateCrid={formattedDayWeek.charAt(0).toUpperCase() + formattedDayWeek.slice(1) + ', ' + formateDay} key={index} />
+                  return <DayCell onEditData={props.onEditData} dateCrid={formattedDayWeek + ', ' + formateDay} key={index} />
                }
                return <DayCell onEditData={props.onEditData} dateCrid={formateDay} key={index} />
             })

@@ -12,6 +12,7 @@ const PopupAddEvent = (props) => {
          popup='big'
          isOpen={props.isOpen}
          onClose={props.onClose}
+         coordinates={props.coordinates}
       >
          <Form
          name='big'

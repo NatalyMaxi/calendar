@@ -28,7 +28,7 @@ const Calendar = (props) => {
             onEditQuicklyData={props.onEditQuicklyData}
          />
          <Navigation
-            currentDate={format(currentDate, 'LLLL yyyy', { locale: ru }).charAt(0).toUpperCase() + format(currentDate, 'LLLL yyyy', { locale: ru }).slice(1)}
+            currentDate={format(currentDate, 'LLLL yyyy', { locale: ru })}
             showNextMonth={showNextMonth}
             showPreviousMonth={showPreviousMonth}
             showCurrentDate={showCurrentDate}

@@ -4,8 +4,8 @@ const PopupWithForm = (props) => {
 
    const popupIsActive = props.isOpen ? 'popup_active' : '';
    return (
-      <div className={`popup popup_type_${props.popup} ${popupIsActive}`}>
-         <div className='popup__content'>
+      <div className={`popup popup_type_${props.popup} ${popupIsActive}`} style={{ left: props.coordinates.left, top: props.coordinates.top + 40 }}>
+         <div className='popup__content' >
             <button
                type='button'
                className='popup__close'

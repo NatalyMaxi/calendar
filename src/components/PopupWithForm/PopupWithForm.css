@@ -1,11 +1,7 @@
 .popup {
    display: flex;
    background-color:transparent;
-   position: fixed;
-   top: 0;
-   bottom: 0;
-   left: 0;
-   right: 0;
+   position: absolute;
    transition: 0.5s ease;
    visibility: hidden;
    opacity: 0;
@@ -39,10 +35,4 @@
    background-repeat: no-repeat;
    background-size: contain;
    cursor: pointer;
-}
-
-.popup_type_small .popup__content {
-   position: absolute;
-   left: 220px;
-   top: 80px;
 }

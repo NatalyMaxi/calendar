@@ -25,6 +25,10 @@
    cursor: pointer;
 }
 
+.day-element__data-container {
+   text-transform: capitalize; 
+}
+
 .day-element__info-container {
    font-size: 14px;
    padding: 0;

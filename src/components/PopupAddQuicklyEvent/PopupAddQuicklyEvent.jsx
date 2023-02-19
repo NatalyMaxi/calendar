@@ -4,11 +4,14 @@ import InputField from '../InputField/InputField';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
 const PopupAddQuicklyEvent = (props) => {
+   
    return (
       <PopupWithForm
          popup='small'
+         name='small-popup'
          isOpen={props.isOpen}
          onClose={props.onClose}
+         coordinates={props.coordinates}
       >
          <Form
             name='small'
