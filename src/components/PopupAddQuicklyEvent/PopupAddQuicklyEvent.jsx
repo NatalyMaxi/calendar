@@ -11,7 +11,7 @@ const PopupAddQuicklyEvent = (props) => {
          name='small-popup'
          isOpen={props.isOpen}
          onClose={props.onClose}
-         coordinates={props.coordinates}
+         style={{ left: props.coordinates.left, top: props.coordinates.top + 40 }}
       >
          <Form
             name='small'

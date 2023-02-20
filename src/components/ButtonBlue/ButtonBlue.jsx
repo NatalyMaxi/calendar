@@ -1,20 +1,13 @@
 import './ButtonBlue.css';
+import { updateCoordinates } from '../../utils/utils';
 
 const ButtonBlue = (props) => {
-   /**Получение координат элемента
- * 
- * @param {*Обект с координатами} value 
- * @returns 
- */
-   function updateCoordinates(value) {
-      return value.getBoundingClientRect()
-   }
 
    function handleClick(evt) {
-      const element = evt.currentTarget //элемент, на котором произошло событие клика
+      const element = evt.currentTarget
       console.log(updateCoordinates(element))
       const newCoordinates = updateCoordinates(element)
-      props.onEditQuicklyData(newCoordinates)//передаем новые координаты в попап
+      props.onEditQuicklyData(newCoordinates)
    }
 
    return (

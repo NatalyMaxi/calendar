@@ -25,7 +25,8 @@ function App() {
     }
   )
 
-  function handleClickAddEvent() {
+  function handleClickAddEvent(coordinates) {
+    setCoordinates(coordinates)
     setIsPopupAddEventOpen(true);
   }
 
