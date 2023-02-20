@@ -1,4 +1,4 @@
-import { format, addDays, startOfMonth, startOfWeek, endOfMonth, endOfWeek, differenceInDays } from 'date-fns';
+import { format, addDays, startOfMonth, startOfWeek, endOfMonth, endOfWeek, differenceInDays, isEqual } from 'date-fns';
 import DayCell from '../DayCell/DayCell';
 import './DaysGrid.css';
 import { ru } from 'date-fns/locale'
@@ -21,16 +21,35 @@ const DaysGrid = (props) => {
     */
    const daysArray = [...Array(differenceInDays(lastDay, startDate) + 1)]
       .map((el, i) => addDays(startDate, i + 1))
+
+
    return (
       <section className='content'>
          {
-            daysArray.map((el, index) => {
-               let formattedDayWeek = format(new Date(el), 'EEEE', { locale: ru })
-               let formateDay = format(new Date(el), 'd')
+            daysArray.map((day, index) => {
+               let formattedDayWeek = format(new Date(day), 'EEEE', { locale: ru })
+               let formateDay = format(new Date(day), 'd')
+
                if (index < 7) {
-                  return <DayCell onEditData={props.onEditData} dateCrid={formattedDayWeek + ', ' + formateDay} key={index} />
+                  return (
+                     <DayCell
+                        isActive={isEqual(props.activeDay, day)}// Совпадают ли указанные даты
+                        onEditData={props.onEditData}
+                        dateCrid={formattedDayWeek + ', ' + formateDay}
+                        key={index}
+                        day={day}
+                     />
+                  )
                }
-               return <DayCell onEditData={props.onEditData} dateCrid={formateDay} key={index} />
+               return (
+                  <DayCell
+                     isActive={props.activeDay === day}
+                     onEditData={props.onEditData}
+                     dateCrid={formateDay}
+                     key={index}
+                     day={day}
+                  />
+               )
             })
          }
       </section>

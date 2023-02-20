@@ -6,10 +6,10 @@ import Calendar from '../Calendar/Calendar';
 import PopupAddEvent from '../PopupAddEvent/PopupAddEvent';
 import PopupAddQuicklyEvent from '../PopupAddQuicklyEvent/PopupAddQuicklyEvent';
 
-
 function App() {
   const [isPopupAddEventOpen, setIsPopupAddEventOpen] = useState(false);
   const [isPopupAddQuicklyEventOpen, setIsPopupAddQuicklyEventOpen] = useState(false);
+  const [activeDay, setActiveDay] = useState()
 
   const [coordinates, setCoordinates] = useState(
     {
@@ -25,7 +25,9 @@ function App() {
     }
   )
 
-  function handleClickAddEvent(coordinates) {
+  function handleClickAddEvent(day, coordinates) {
+    setActiveDay(day)
+    console.log(day)
     setCoordinates(coordinates)
     setIsPopupAddEventOpen(true);
   }
@@ -36,6 +38,7 @@ function App() {
   }
 
   function closeAllPopups() {
+    setActiveDay(false)
     setIsPopupAddEventOpen(false)
     setIsPopupAddQuicklyEventOpen(false)
   }
@@ -50,6 +53,7 @@ function App() {
             onEditData={handleClickAddEvent}
             onEditQuicklyData={handleClickAddQuicklyEvent}
             coordinates={coordinates}
+            activeDay={activeDay}
           />}
         />
       </Routes>

@@ -36,6 +36,7 @@ const Calendar = (props) => {
          <DaysGrid
             currentDate={currentDate}
             onEditData={props.onEditData}
+            activeDay={props.activeDay}
          />
       </div>
    );
