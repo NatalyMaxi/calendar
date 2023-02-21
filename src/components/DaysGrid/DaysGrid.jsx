@@ -1,4 +1,4 @@
-import { format, addDays, startOfMonth, startOfWeek, endOfMonth, endOfWeek, differenceInDays, isEqual } from 'date-fns';
+import { format, addDays, startOfMonth, startOfWeek, endOfMonth, endOfWeek, differenceInDays, isEqual, isSameDay } from 'date-fns';
 import DayCell from '../DayCell/DayCell';
 import './DaysGrid.css';
 import { ru } from 'date-fns/locale'
@@ -22,32 +22,42 @@ const DaysGrid = (props) => {
    const daysArray = [...Array(differenceInDays(lastDay, startDate) + 1)]
       .map((el, i) => addDays(startDate, i + 1))
 
-
    return (
       <section className='content'>
          {
             daysArray.map((day, index) => {
                let formattedDayWeek = format(new Date(day), 'EEEE', { locale: ru })
                let formateDay = format(new Date(day), 'd')
-
+               let todayEvent = {}
+               for (let key in props.events) {
+                  if (isSameDay(day, new Date(key))) {
+                     todayEvent.name = props.events[key].name
+                     todayEvent.participants = props.events[key].participants.map(i => i + ', ')
+                     todayEvent.description = props.events[key].description
+                  }
+               }
                if (index < 7) {
                   return (
                      <DayCell
                         isActive={isEqual(props.activeDay, day)}// Совпадают ли указанные даты
                         onEditData={props.onEditData}
                         dateCrid={formattedDayWeek + ', ' + formateDay}
-                        key={index}
+                        key={day}
                         day={day}
+                        events={props.events}
+                        todayEvent={todayEvent}
                      />
                   )
                }
                return (
                   <DayCell
-                     isActive={props.activeDay === day}
+                     isActive={isEqual(props.activeDay, day)}
                      onEditData={props.onEditData}
                      dateCrid={formateDay}
-                     key={index}
+                     key={day}
                      day={day}
+                     events={props.events}
+                     todayEvent={todayEvent}
                   />
                )
             })

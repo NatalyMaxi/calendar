@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 const Calendar = (props) => {
    const [currentDate, setCurrentDate] = useState(new Date())
-   
+
    const showNextMonth = () => {
       setCurrentDate(addMonths(new Date(currentDate), 1))
 
@@ -37,6 +37,7 @@ const Calendar = (props) => {
             currentDate={currentDate}
             onEditData={props.onEditData}
             activeDay={props.activeDay}
+            events={props.events}
          />
       </div>
    );

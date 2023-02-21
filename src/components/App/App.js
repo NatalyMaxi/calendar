@@ -25,9 +25,31 @@ function App() {
     }
   )
 
+  const [events, setEvents] = useState({
+    '2023-02-17': {
+      name: 'Сходить в кино',
+      participants: [
+        'Илья',
+        'Оля'
+      ]
+    },
+    '2023-02-18': {
+      name: 'Пойти в гости',
+      participants: [
+        'Илья'
+      ]
+    },
+    '2023-02-21': {
+      name: 'Пойти в гости',
+      participants: [
+        'Илья'
+      ],
+      description: 'Принести торт'
+    }
+  });
+
   function handleClickAddEvent(day, coordinates) {
     setActiveDay(day)
-    console.log(day)
     setCoordinates(coordinates)
     setIsPopupAddEventOpen(true);
   }
@@ -42,6 +64,26 @@ function App() {
     setIsPopupAddEventOpen(false)
     setIsPopupAddQuicklyEventOpen(false)
   }
+
+  function aa() {
+    console.log('Это новый объект', events)
+  }
+  function handleSubmitAddEvent(data) {
+    const newEvents = { ...events, [data.date]: { name: data.name, participants: [data.participants], description: [data.description], } }
+    // console.log(newEvents)
+    setEvents(newEvents)
+    setTimeout(aa, 500)
+    closeAllPopups();
+  }
+
+  function handleDeleteEvent(data) {
+    const newEvents = events
+    delete newEvents[data.date]
+    setEvents(newEvents)
+    setTimeout(aa, 500)
+    closeAllPopups();
+  }
+
   return (
     <div className='page'>
       <Routes>
@@ -54,6 +96,7 @@ function App() {
             onEditQuicklyData={handleClickAddQuicklyEvent}
             coordinates={coordinates}
             activeDay={activeDay}
+            events={events}
           />}
         />
       </Routes>
@@ -61,6 +104,9 @@ function App() {
         isOpen={isPopupAddEventOpen}
         onClose={closeAllPopups}
         coordinates={coordinates}
+        day={activeDay}
+        onAddEvent={handleSubmitAddEvent}
+        onDeleteEvent={handleDeleteEvent}
       />
       <PopupAddQuicklyEvent
         isOpen={isPopupAddQuicklyEventOpen}

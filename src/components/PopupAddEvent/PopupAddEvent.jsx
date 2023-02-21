@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import Button from '../Button/Button';
 import Form from '../Form/Form';
 import InputField from '../InputField/InputField';
@@ -8,6 +9,56 @@ import {
 } from '../../utils/utils'
 
 const PopupAddEvent = (props) => {
+   const [name, setName] = useState('');
+   const [date, setDate] = useState('');
+   const [participants, setParticipants] = useState([]);
+   const [description, setDescription] = useState('')
+
+   function handleChangeName(evt) {
+      setName(evt.target.value)
+      console.log(name)
+      
+   };
+
+   function handleChangeDate(evt) {
+      setDate(evt.target.value)
+   };
+
+   function handleChangeParticipants(evt) {
+      setParticipants(evt.target.value)
+      console.log(participants)
+   };
+
+   function handleChangeDescription(evt) {
+      setDescription(evt.target.value)
+      console.log(description)
+   };
+
+   function handleSubmit(evt) {
+      evt.preventDefault()
+      props.onAddEvent({
+         name: name,
+         date: date,
+         participants: participants,
+         description: description
+      })
+      setName('')
+      setDate('')
+      setParticipants('')
+      setDescription('')
+   }
+
+   function handleSubmitDelete(evt) {
+      evt.preventDefault()
+      props.onDeleteEvent({ name, date, participants, description })
+   }
+
+   useEffect(() => {
+      setName('')
+      setDate('')
+      setParticipants('')
+      setDescription('')
+   }, [])
 
    return (
       <PopupWithForm
@@ -15,6 +66,7 @@ const PopupAddEvent = (props) => {
          isOpen={props.isOpen}
          onClose={props.onClose}
          coordinates={props.coordinates}
+         day={props.day}
          style={{
             left: coordinatesLeft(props.coordinates),
             top: coordinatesTop(props.coordinates)
@@ -22,25 +74,35 @@ const PopupAddEvent = (props) => {
       >
          <Form
             name='big'
+            onSubmit={handleSubmit}
+            value={description || ''}
+            onChange={handleChangeDescription}
+            onDeleteEvent={handleSubmitDelete}
          >
             <>
                <InputField
                   id='event'
-                  name='event'
-                  type='search'
+                  name='name'
+                  type='text'
                   placeholder='Событие'
+                  value={name || ''}
+                  onChange={handleChangeName}
                />
                <InputField
                   id='date'
                   name='date'
-                  type='search'
-                  placeholder='День, месяц, год'
+                  type='text'
+                  placeholder='Формат даты 2023-02-17'
+                  value={date || ''}
+                  onChange={handleChangeDate}
                />
                <InputField
                   id='participants'
                   name='participants'
-                  type='search'
+                  type='text'
                   placeholder='Имена участников'
+                  value={participants || []}
+                  onChange={handleChangeParticipants}
                />
             </>
             <>

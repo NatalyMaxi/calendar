@@ -8,7 +8,7 @@ const Form = (props) => {
       <form
          name={props.name}
          className='form'
-         noValidate
+         // noValidate
          onSubmit={props.onSubmit}
          {...props.rest}
       >
@@ -19,7 +19,14 @@ const Form = (props) => {
             </div>
             {
                addTextarea &&
-               <textarea className='form__item' id='description' cols="30" rows="10" placeholder='Описание'></textarea>
+               <textarea
+                     className='form__item'
+                     id='description'
+                     cols="30"
+                     rows="10"
+                     onChange={props.onChange}
+                     value={props.value}
+                     placeholder='Описание'/>
             }
             <div className='form__button-container'>
                {props.children[1]}
