@@ -9,6 +9,7 @@ import {
 } from '../../utils/utils'
 
 const PopupAddEvent = (props) => {
+   
    const [name, setName] = useState('');
    const [date, setDate] = useState('');
    const [participants, setParticipants] = useState([]);

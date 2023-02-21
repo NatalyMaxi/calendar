@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { format, } from 'date-fns';
+import { ru } from 'date-fns/locale'
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import StartPage from '../StartPage/StartPage';
@@ -24,30 +26,7 @@ function App() {
     }
   )
 
-  // const [events, setEvents] = useState({
-  //   '2023-02-17': {
-  //     name: 'Сходить в кино',
-  //     participants: [
-  //       'Илья',
-  //       'Оля'
-  //     ]
-  //   },
-  //   '2023-02-18': {
-  //     name: 'Пойти в гости',
-  //     participants: [
-  //       'Илья'
-  //     ]
-  //   },
-  //   '2023-02-21': {
-  //     name: 'Пойти в гости',
-  //     participants: [
-  //       'Илья'
-  //     ],
-  //     description: 'Принести торт'
-  //   }
-  // });
-
-    const [events, setEvents] = useState(JSON.parse(localStorage.getItem('events')) || {});
+  const [events, setEvents] = useState(JSON.parse(localStorage.getItem('events')) || {});
 
   useEffect(() => {
 
@@ -74,6 +53,12 @@ function App() {
 
   function handleSubmitAddEvent(data) {
     const newEvents = { ...events, [data.date]: { name: data.name, participants: [data.participants], description: [data.description], } }
+    setEvents(newEvents)
+    closeAllPopups();
+  }
+
+  function handleSubmitAddEventQuickly(data) {
+    const newEvents = { ...events, [format(new Date(), "yyyy-MM-d", { locale: ru })]: { name: data.name, participants: [''], description: '', } }
     setEvents(newEvents)
     closeAllPopups();
   }
@@ -113,6 +98,7 @@ function App() {
         isOpen={isPopupAddQuicklyEventOpen}
         onClose={closeAllPopups}
         coordinates={coordinates}
+        onAddEvent={handleSubmitAddEventQuickly}
       />
     </div>
   );
