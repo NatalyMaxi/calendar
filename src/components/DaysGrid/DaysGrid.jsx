@@ -44,7 +44,6 @@ const DaysGrid = (props) => {
                         dateCrid={formattedDayWeek + ', ' + formateDay}
                         key={day}
                         day={day}
-                        events={props.events}
                         todayEvent={todayEvent}
                      />
                   )
@@ -56,7 +55,7 @@ const DaysGrid = (props) => {
                      dateCrid={formateDay}
                      key={day}
                      day={day}
-                     events={props.events}
+                  
                      todayEvent={todayEvent}
                   />
                )

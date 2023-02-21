@@ -3,6 +3,10 @@ import { updateCoordinates } from '../../utils/utils';
 
 const DayCell = (props) => {
    const isActive = props.isActive ? 'day-element_active' : '';
+   const isEvent = props?.todayEvent?.name?.length > 0 ? 'day-element_type_marked' :
+      props?.todayEvent?.participants?.length > 0 ? 'day-element_type_marked' :
+         props?.todayEvent?.description?.length > 0 ? 'day-element_type_marked' :
+            '';
 
    function handleClick(evt) {
       const element = evt.currentTarget //элемент, на котором произошло событие клика
@@ -11,7 +15,7 @@ const DayCell = (props) => {
    }
 
    return (
-      <section className={`day-element ${isActive}`} onClick={handleClick} type='button'>
+      <section className={`day-element ${isActive} ${isEvent}`} onClick={handleClick} type='button'>
          <div className='day-element__data-container'>
             <span className='day-element__day-week'>{props.dayWeek}</span>
             <span className='day-element__number'>{props.dateCrid}</span>
@@ -26,3 +30,5 @@ const DayCell = (props) => {
 };
 
 export default DayCell;
+
+//наверно надо прокидывать стэйт что ли,  как я для активного класса кидала  ну типа активный день, по которому кликнули

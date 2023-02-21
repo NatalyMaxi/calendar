@@ -16,8 +16,6 @@ const PopupAddEvent = (props) => {
 
    function handleChangeName(evt) {
       setName(evt.target.value)
-      console.log(name)
-      
    };
 
    function handleChangeDate(evt) {
@@ -26,12 +24,10 @@ const PopupAddEvent = (props) => {
 
    function handleChangeParticipants(evt) {
       setParticipants(evt.target.value)
-      console.log(participants)
    };
 
    function handleChangeDescription(evt) {
       setDescription(evt.target.value)
-      console.log(description)
    };
 
    function handleSubmit(evt) {

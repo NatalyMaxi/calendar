@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import StartPage from '../StartPage/StartPage';
@@ -21,32 +21,39 @@ function App() {
       left: 0,
       height: 0,
       bottom: 0,
-
     }
   )
 
-  const [events, setEvents] = useState({
-    '2023-02-17': {
-      name: 'Сходить в кино',
-      participants: [
-        'Илья',
-        'Оля'
-      ]
-    },
-    '2023-02-18': {
-      name: 'Пойти в гости',
-      participants: [
-        'Илья'
-      ]
-    },
-    '2023-02-21': {
-      name: 'Пойти в гости',
-      participants: [
-        'Илья'
-      ],
-      description: 'Принести торт'
-    }
-  });
+  // const [events, setEvents] = useState({
+  //   '2023-02-17': {
+  //     name: 'Сходить в кино',
+  //     participants: [
+  //       'Илья',
+  //       'Оля'
+  //     ]
+  //   },
+  //   '2023-02-18': {
+  //     name: 'Пойти в гости',
+  //     participants: [
+  //       'Илья'
+  //     ]
+  //   },
+  //   '2023-02-21': {
+  //     name: 'Пойти в гости',
+  //     participants: [
+  //       'Илья'
+  //     ],
+  //     description: 'Принести торт'
+  //   }
+  // });
+
+    const [events, setEvents] = useState(JSON.parse(localStorage.getItem('events')) || {});
+
+  useEffect(() => {
+
+    localStorage.setItem('events', JSON.stringify(events))
+
+  }, [events])
 
   function handleClickAddEvent(day, coordinates) {
     setActiveDay(day)
@@ -65,14 +72,9 @@ function App() {
     setIsPopupAddQuicklyEventOpen(false)
   }
 
-  function aa() {
-    console.log('Это новый объект', events)
-  }
   function handleSubmitAddEvent(data) {
     const newEvents = { ...events, [data.date]: { name: data.name, participants: [data.participants], description: [data.description], } }
-    // console.log(newEvents)
     setEvents(newEvents)
-    setTimeout(aa, 500)
     closeAllPopups();
   }
 
@@ -80,7 +82,6 @@ function App() {
     const newEvents = events
     delete newEvents[data.date]
     setEvents(newEvents)
-    setTimeout(aa, 500)
     closeAllPopups();
   }
 
