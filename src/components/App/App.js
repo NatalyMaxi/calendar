@@ -58,7 +58,7 @@ function App() {
   }
 
   function handleSubmitAddEventQuickly(data) {
-    const newEvents = { ...events, [format(new Date(), "yyyy-MM-d", { locale: ru })]: { name: data.name, participants: [''], description: '', } }
+    const newEvents = { ...events, [format(new Date(), "yyyy-MM-d", { locale: ru })]: { name: data.name, participants: [], description: '', } }
     setEvents(newEvents)
     closeAllPopups();
   }

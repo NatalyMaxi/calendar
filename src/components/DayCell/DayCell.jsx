@@ -3,11 +3,7 @@ import { updateCoordinates } from '../../utils/utils';
 
 const DayCell = (props) => {
    const isActive = props.isActive ? 'day-element_active' : '';
-   const isEvent = props?.todayEvent?.name?.length > 0 ? 'day-element_type_marked' :
-      props?.todayEvent?.participants?.length > 0 ? 'day-element_type_marked' :
-         props?.todayEvent?.description?.length > 0 ? 'day-element_type_marked' :
-            '';
-
+   const isEvent = props?.todayEvent?.name?.length > 0 ? 'day-element_type_marked' : '';
    function handleClick(evt) {
       const element = evt.currentTarget //элемент, на котором произошло событие клика
       const newCoordinates = updateCoordinates(element)
