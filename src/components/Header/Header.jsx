@@ -11,7 +11,7 @@ const Header = (props) => {
                <ButtonBlue text='Добавить' onEditQuicklyData={props.onEditQuicklyData} />
                <ButtonBlue text='Обновить' />
             </div>
-            <Search />
+            <Search events={props.events} />
          </div>
       </div>
    );

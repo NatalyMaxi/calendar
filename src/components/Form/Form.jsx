@@ -8,7 +8,7 @@ const Form = (props) => {
       <form
          name={props.name}
          className='form'
-         // noValidate
+         noValidate
          onSubmit={props.onSubmit}
          {...props.rest}
       >

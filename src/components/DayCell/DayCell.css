@@ -26,7 +26,7 @@
 }
 
 .day-element__data-container {
-   text-transform: capitalize; 
+   text-transform: capitalize;
 }
 
 .day-element__info-container {
@@ -36,17 +36,20 @@
 }
 
 .day-element__title {
+   width: 135px;
    font-weight: 700;
    color: #000;
    text-overflow: ellipsis;
    overflow: hidden;
-   white-space: nowrap;
+   white-space: wrap;
    margin: 0;
 }
 
 .day-element__text {
+   width: 135px;
    font-weight: 400;
    color: #292929;
-   overflow: hidden;
    margin: 0;
+   text-overflow: ellipsis;
+   overflow: hidden;
 }

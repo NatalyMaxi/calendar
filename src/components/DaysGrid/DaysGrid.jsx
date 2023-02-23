@@ -32,7 +32,7 @@ const DaysGrid = (props) => {
                for (let key in props.events) {
                   if (isSameDay(day, new Date(key))) {
                      todayEvent.name = props.events[key].name
-                     todayEvent.participants = props.events[key].participants.map(i => i + ', ')
+                     todayEvent.participants = props.events[key].participants.map(i => i)
                      todayEvent.description = props.events[key].description
                   }
                }

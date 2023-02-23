@@ -72,7 +72,7 @@ const PopupAddEvent = (props) => {
          <Form
             name='big'
             onSubmit={handleSubmit}
-            value={description || ''}
+            value={description}
             onChange={handleChangeDescription}
             onDeleteEvent={handleSubmitDelete}
          >
@@ -82,7 +82,7 @@ const PopupAddEvent = (props) => {
                   name='name'
                   type='text'
                   placeholder='Событие'
-                  value={name || ''}
+                  value={name}
                   onChange={handleChangeName}
                />
                <InputField
@@ -90,7 +90,7 @@ const PopupAddEvent = (props) => {
                   name='date'
                   type='text'
                   placeholder='Формат даты 2023-02-17'
-                  value={date || ''}
+                  value={date}
                   onChange={handleChangeDate}
                />
                <InputField
@@ -98,7 +98,7 @@ const PopupAddEvent = (props) => {
                   name='participants'
                   type='text'
                   placeholder='Имена участников'
-                  value={participants || []}
+                  value={participants}
                   onChange={handleChangeParticipants}
                />
             </>

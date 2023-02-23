@@ -52,13 +52,13 @@ function App() {
   }
 
   function handleSubmitAddEvent(data) {
-    const newEvents = { ...events, [data.date]: { name: data.name, participants: [data.participants], description: [data.description], } }
+    const newEvents = { ...events, [data.date]: { name: data.name, participants: [data.participants], description: [data.description], date: data.date } }
     setEvents(newEvents)
     closeAllPopups();
   }
 
   function handleSubmitAddEventQuickly(data) {
-    const newEvents = { ...events, [format(new Date(), "yyyy-MM-d", { locale: ru })]: { name: data.name, participants: [], description: '', } }
+    const newEvents = { ...events, [format(new Date(), "yyyy-MM-d", { locale: ru })]: { name: data.name, participants: [], description: null, date: data.date } }
     setEvents(newEvents)
     closeAllPopups();
   }
@@ -93,6 +93,7 @@ function App() {
         day={activeDay}
         onAddEvent={handleSubmitAddEvent}
         onDeleteEvent={handleDeleteEvent}
+        events={events}
       />
       <PopupAddQuicklyEvent
         isOpen={isPopupAddQuicklyEventOpen}

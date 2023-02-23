@@ -26,12 +26,14 @@ const Calendar = (props) => {
          <Header
             popup={props.popup}
             onEditQuicklyData={props.onEditQuicklyData}
+            events={props.events}
          />
          <Navigation
             currentDate={format(currentDate, 'LLLL yyyy', { locale: ru })}
             showNextMonth={showNextMonth}
             showPreviousMonth={showPreviousMonth}
             showCurrentDate={showCurrentDate}
+            events={props.events}
          />
          <DaysGrid
             currentDate={currentDate}
