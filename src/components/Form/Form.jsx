@@ -1,8 +1,7 @@
 import './Form.css';
 
 const Form = (props) => {
-
-   const addTextarea = props.name === 'big'? true: false
+   const addTextarea = props.name === 'big' ? true : false;
 
    return (
       <form
@@ -15,18 +14,17 @@ const Form = (props) => {
          <div className='form__container'>
             <div className='form__input-container'>
                {props.children[0]}
-
             </div>
             {
                addTextarea &&
                <textarea
-                     className='form__item'
-                     id='description'
-                     cols="30"
-                     rows="10"
-                     onChange={props.onChange}
-                     value={props.value}
-                     placeholder='Описание'/>
+                  className='form__item'
+                  id='description'
+                  cols='30'
+                  rows='10'
+                  onChange={props.onChange}
+                  value={props.value}
+                  placeholder='Описание' />
             }
             <div className='form__button-container'>
                {props.children[1]}

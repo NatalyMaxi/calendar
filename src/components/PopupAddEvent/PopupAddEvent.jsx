@@ -6,30 +6,29 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import {
    coordinatesLeft,
    coordinatesTop
-} from '../../utils/utils'
+} from '../../utils/utils';
 
 const PopupAddEvent = (props) => {
-   
    const [name, setName] = useState('');
    const [date, setDate] = useState('');
    const [participants, setParticipants] = useState([]);
-   const [description, setDescription] = useState('')
+   const [description, setDescription] = useState('');
 
    function handleChangeName(evt) {
       setName(evt.target.value)
-   };
+   }
 
    function handleChangeDate(evt) {
       setDate(evt.target.value)
-   };
+   }
 
    function handleChangeParticipants(evt) {
       setParticipants(evt.target.value)
-   };
+   }
 
    function handleChangeDescription(evt) {
       setDescription(evt.target.value)
-   };
+   }
 
    function handleSubmit(evt) {
       evt.preventDefault()

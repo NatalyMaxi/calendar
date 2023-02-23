@@ -2,15 +2,13 @@ import './Search.css';
 import React, { useState, useEffect } from 'react';
 
 const Search = (props) => {
-
-   const [searchValue, setSearchValue] = useState()
-   const [eventsArray, setEventsArray] = useState([])
+   const [searchValue, setSearchValue] = useState();
+   const [eventsArray, setEventsArray] = useState([]);
+   const showArrayEvents = eventsArray.length > 0 ? 'search__container_type_visible' : '';
 
    function handleChange(evt) {
       setSearchValue(evt.target.value)
    }
-
-   const showArrayEvents = eventsArray.length > 0 ? 'search__container_type_visible' : ''
 
    useEffect(() => {
       if (!searchValue) {

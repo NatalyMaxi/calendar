@@ -9,7 +9,7 @@ const PopupAddQuicklyEvent = (props) => {
 
    function handleChangeName(evt) {
       setName(evt.target.value)
-   };
+   }
 
    function handleSubmit(evt) {
       evt.preventDefault()
@@ -32,14 +32,14 @@ const PopupAddQuicklyEvent = (props) => {
             onSubmit={handleSubmit}
          >
             <>
-               <InputField 
+               <InputField
                   id='info'
                   name='info'
                   type='text'
                   placeholder='Введите событие на текущий день'
                   value={name || ''}
                   onChange={handleChangeName}
-                  />
+               />
             </>
             <>
                <Button

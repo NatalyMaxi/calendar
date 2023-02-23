@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { format, } from 'date-fns';
-import { ru } from 'date-fns/locale'
+import { ru } from 'date-fns/locale';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import StartPage from '../StartPage/StartPage';
@@ -11,7 +11,7 @@ import PopupAddQuicklyEvent from '../PopupAddQuicklyEvent/PopupAddQuicklyEvent';
 function App() {
   const [isPopupAddEventOpen, setIsPopupAddEventOpen] = useState(false);
   const [isPopupAddQuicklyEventOpen, setIsPopupAddQuicklyEventOpen] = useState(false);
-  const [activeDay, setActiveDay] = useState()
+  const [activeDay, setActiveDay] = useState();
   const [events, setEvents] = useState(JSON.parse(localStorage.getItem('events')) || {});
   const [coordinates, setCoordinates] = useState(
     {
@@ -24,7 +24,7 @@ function App() {
       height: 0,
       bottom: 0,
     }
-  )
+  );
 
   useEffect(() => {
     localStorage.setItem('events', JSON.stringify(events))
@@ -50,11 +50,11 @@ function App() {
   function handleSubmitAddEvent(data) {
     const newEvents = { ...events, [data.date]: { name: data.name, participants: [data.participants], description: [data.description], date: data.date } }
     setEvents(newEvents)
-    closeAllPopups();
+    closeAllPopups()
   }
 
   function handleSubmitAddEventQuickly(data) {
-    const newEvents = { ...events, [format(new Date(), "yyyy-MM-d", { locale: ru })]: { name: data.name, participants: [], description: null, date: data.date } }
+    const newEvents = { ...events, [format(new Date(), 'yyyy-MM-d', { locale: ru })]: { name: data.name, participants: [], description: null, date: data.date } }
     setEvents(newEvents)
     closeAllPopups();
   }
@@ -63,7 +63,7 @@ function App() {
     const newEvents = events
     delete newEvents[data.date]
     setEvents(newEvents)
-    closeAllPopups();
+    closeAllPopups()
   }
 
   const handlePopupСlosingByEsc = useCallback((evt) => {
@@ -78,7 +78,7 @@ function App() {
     } else {
       document.removeEventListener('keydown', handlePopupСlosingByEsc);
     }
-  }, [isPopupAddEventOpen, isPopupAddQuicklyEventOpen, handlePopupСlosingByEsc]);
+  }, [isPopupAddEventOpen, isPopupAddQuicklyEventOpen, handlePopupСlosingByEsc])
 
   return (
     <div className='page'>
@@ -86,7 +86,6 @@ function App() {
         <Route path='/'
           element={<StartPage />}
         />
-
         <Route path='calendar'
           element={<Calendar
             onEditData={handleClickAddEvent}
@@ -108,7 +107,6 @@ function App() {
         events={events}
         onKeyDown={handlePopupСlosingByEsc}
       />
-
       <PopupAddQuicklyEvent
         isOpen={isPopupAddQuicklyEventOpen}
         onClose={closeAllPopups}
@@ -116,7 +114,6 @@ function App() {
         onAddEvent={handleSubmitAddEventQuickly}
         onPopupСlosingByEsc={handlePopupСlosingByEsc}
       />
-
     </div>
   );
 }

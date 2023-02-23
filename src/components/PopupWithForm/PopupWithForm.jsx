@@ -1,8 +1,8 @@
 import './PopupWithForm.css';
 
 const PopupWithForm = (props) => {
-
    const popupIsActive = props.isOpen ? 'popup_active' : '';
+   
    return (
       <div
          className={`popup popup_type_${props.popup} ${popupIsActive}`}

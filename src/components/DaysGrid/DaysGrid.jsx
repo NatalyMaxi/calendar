@@ -1,7 +1,7 @@
 import { format, addDays, startOfMonth, startOfWeek, endOfMonth, endOfWeek, differenceInDays, isEqual, isSameDay } from 'date-fns';
 import DayCell from '../DayCell/DayCell';
 import './DaysGrid.css';
-import { ru } from 'date-fns/locale'
+import { ru } from 'date-fns/locale';
 
 const DaysGrid = (props) => {
    /**
@@ -20,7 +20,7 @@ const DaysGrid = (props) => {
     * Массив всех дат,  входящих в полные недеи,  сосмещением на единицу, чтоб перевести к русской недели
     */
    const daysArray = [...Array(differenceInDays(lastDay, startDate) + 1)]
-      .map((el, i) => addDays(startDate, i + 1))
+      .map((el, i) => addDays(startDate, i + 1));
 
    return (
       <section className='content'>
@@ -55,7 +55,6 @@ const DaysGrid = (props) => {
                      dateCrid={formateDay}
                      key={day}
                      day={day}
-                  
                      todayEvent={todayEvent}
                   />
                )

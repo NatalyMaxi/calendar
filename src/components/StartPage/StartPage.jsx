@@ -1,8 +1,9 @@
 import './StartPage.css';
 import { Link } from 'react-router-dom';
-import Logo from '../Logo/Logo'
+import Logo from '../Logo/Logo';
 
 const StartPage = () => {
+
    return (
       <div className='start-page'>
          <div className='start-page__container'>

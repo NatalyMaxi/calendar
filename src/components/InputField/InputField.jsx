@@ -1,6 +1,7 @@
 import './InputField.css';
 
 const InputField = (props) => {
+   
    return (
       <input
          className='field'

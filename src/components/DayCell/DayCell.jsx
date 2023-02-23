@@ -4,6 +4,7 @@ import { updateCoordinates } from '../../utils/utils';
 const DayCell = (props) => {
    const isActive = props.isActive ? 'day-element_active' : '';
    const isEvent = props?.todayEvent?.name?.length > 0 ? 'day-element_type_marked' : '';
+
    function handleClick(evt) {
       const element = evt.currentTarget //элемент, на котором произошло событие клика
       const newCoordinates = updateCoordinates(element)
@@ -11,7 +12,7 @@ const DayCell = (props) => {
    }
 
    return (
-      <section className={`day-element ${isActive} ${isEvent}`} onClick={handleClick} type='button'>
+      <div className={`day-element ${isActive} ${isEvent}`} onClick={handleClick} type='button'>
          <div className='day-element__data-container'>
             <span className='day-element__day-week'>{props.dayWeek}</span>
             <span className='day-element__number'>{props.dateCrid}</span>
@@ -21,7 +22,7 @@ const DayCell = (props) => {
             <p className='day-element__text'>{props.todayEvent.participants}</p>
             <p className='day-element__text'>{props.todayEvent.description}</p>
          </div>
-      </section>
+      </div>
    );
 };
 
