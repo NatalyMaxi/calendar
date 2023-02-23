@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/calendar/static/css/main.2ff4fd53.css",
+    "main.js": "/calendar/static/js/main.9316b921.js",
+    "static/js/787.f4b9e84d.chunk.js": "/calendar/static/js/787.f4b9e84d.chunk.js",
+    "static/media/Logo.svg": "/calendar/static/media/Logo.ba16d3756f4b33edb8db6f06ad0939fb.svg",
+    "index.html": "/calendar/index.html",
+    "main.2ff4fd53.css.map": "/calendar/static/css/main.2ff4fd53.css.map",
+    "main.9316b921.js.map": "/calendar/static/js/main.9316b921.js.map",
+    "787.f4b9e84d.chunk.js.map": "/calendar/static/js/787.f4b9e84d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2ff4fd53.css",
+    "static/js/main.9316b921.js"
+  ]
+}
