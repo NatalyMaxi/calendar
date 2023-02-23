@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { format, } from 'date-fns';
 import { ru } from 'date-fns/locale'
-import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import './App.css';
 import StartPage from '../StartPage/StartPage';
 import Calendar from '../Calendar/Calendar';
 import PopupAddEvent from '../PopupAddEvent/PopupAddEvent';
@@ -12,7 +12,7 @@ function App() {
   const [isPopupAddEventOpen, setIsPopupAddEventOpen] = useState(false);
   const [isPopupAddQuicklyEventOpen, setIsPopupAddQuicklyEventOpen] = useState(false);
   const [activeDay, setActiveDay] = useState()
-
+  const [events, setEvents] = useState(JSON.parse(localStorage.getItem('events')) || {});
   const [coordinates, setCoordinates] = useState(
     {
       x: 0,
@@ -26,12 +26,8 @@ function App() {
     }
   )
 
-  const [events, setEvents] = useState(JSON.parse(localStorage.getItem('events')) || {});
-
   useEffect(() => {
-
     localStorage.setItem('events', JSON.stringify(events))
-
   }, [events])
 
   function handleClickAddEvent(day, coordinates) {
@@ -70,12 +66,27 @@ function App() {
     closeAllPopups();
   }
 
+  const handlePopupСlosingByEsc = useCallback((evt) => {
+    if (evt.keyCode === 27) {
+      closeAllPopups();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isPopupAddEventOpen || isPopupAddQuicklyEventOpen) {
+      document.addEventListener('keydown', handlePopupСlosingByEsc);
+    } else {
+      document.removeEventListener('keydown', handlePopupСlosingByEsc);
+    }
+  }, [isPopupAddEventOpen, isPopupAddQuicklyEventOpen, handlePopupСlosingByEsc]);
+
   return (
     <div className='page'>
       <Routes>
         <Route path='/'
           element={<StartPage />}
         />
+
         <Route path='calendar'
           element={<Calendar
             onEditData={handleClickAddEvent}
@@ -86,6 +97,7 @@ function App() {
           />}
         />
       </Routes>
+
       <PopupAddEvent
         isOpen={isPopupAddEventOpen}
         onClose={closeAllPopups}
@@ -94,13 +106,17 @@ function App() {
         onAddEvent={handleSubmitAddEvent}
         onDeleteEvent={handleDeleteEvent}
         events={events}
+        onKeyDown={handlePopupСlosingByEsc}
       />
+
       <PopupAddQuicklyEvent
         isOpen={isPopupAddQuicklyEventOpen}
         onClose={closeAllPopups}
         coordinates={coordinates}
         onAddEvent={handleSubmitAddEventQuickly}
+        onPopupСlosingByEsc={handlePopupСlosingByEsc}
       />
+
     </div>
   );
 }
